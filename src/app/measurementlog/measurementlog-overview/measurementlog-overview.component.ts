@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PipeTransform } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MeasurementlogDto } from 'src/app/models/measurmentlog/measurementlogdto';
 import { ManagerService } from 'src/app/services/manager.service';
@@ -16,13 +16,24 @@ export class MeasurementlogOverviewComponent implements OnInit {
   pageSize = 10;
   collectionSize = 0;
   
-  constructor(private manager: ManagerService) { }
+  constructor(private manager: ManagerService) {
+    this.filter.valueChanges.subscribe(text => {
+      console.log(text);
+      this.refreshPage(text);
+    });
+    // this.countries$ = this.filter.valueChanges.pipe(
+    //   startWith(''),
+    //   map(text => search(text, pipe))
+    // );
+  }
 
   ngOnInit(): void {
     this.loadData();
   }
 
   loadData(){
+    var date: Date = new Date("637749899492519800");
+    console.log(date);
     this.manager.getAllMeasurementLogs().subscribe((data) => {
       console.log(data);
       this.measurementLogs = data;
@@ -30,10 +41,28 @@ export class MeasurementlogOverviewComponent implements OnInit {
     });
   }
 
-  refreshPage() {
-    this.measurementLogsToRender = this.measurementLogs
+  refreshPage(text: string = "") {
+    if(text.length == 0){
+      this.measurementLogsToRender = this.measurementLogs
       // .map((country, i) => ({...country}))
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+    }
+    else{
+      console.log("test");
+      this.measurementLogsToRender = this.search(text);
+    }
     console.log(this.measurementLogsToRender);
+  }
+
+  search(text: string): MeasurementlogDto[] {
+    this.page = 1;
+    return this.measurementLogs.filter(measurementlog => {
+      const term = text.toLowerCase();
+      return measurementlog.measurementName.toLowerCase().includes(term)
+          || measurementlog.message.toLowerCase().includes(term)
+          || measurementlog.type.toLowerCase().includes(term)
+          // || pipe.transform(country.area).includes(term)
+          // || pipe.transform(country.population).includes(term);
+    });
   }
 }
