@@ -23,7 +23,7 @@
             <tbody>
                 <tr *ngFor="let measurementLog of measurementLogsToRender; index as i">
                     <td>{{measurementLog.measurementName}}</td>
-                    <td>{{measurementLog.createdAt}}</td>
+                    <td>{{measurementLog.createdAt | TicksToDatePipe}}</td>
                     <td>{{measurementLog.type}}</td>
                     <td>{{measurementLog.message}}</td>
                 </tr>

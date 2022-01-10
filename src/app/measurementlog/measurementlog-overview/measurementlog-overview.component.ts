@@ -32,10 +32,7 @@ export class MeasurementlogOverviewComponent implements OnInit {
   }
 
   loadData(){
-    var date: Date = new Date("637749899492519800");
-    console.log(date);
     this.manager.getAllMeasurementLogs().subscribe((data) => {
-      console.log(data);
       this.measurementLogs = data;
       this.refreshPage();
     });
@@ -48,10 +45,8 @@ export class MeasurementlogOverviewComponent implements OnInit {
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
     }
     else{
-      console.log("test");
       this.measurementLogsToRender = this.search(text);
     }
-    console.log(this.measurementLogsToRender);
   }
 
   search(text: string): MeasurementlogDto[] {

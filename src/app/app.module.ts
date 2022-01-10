@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { MeasurementlogOverviewComponent } from './measurementlog/measurementlog-overview/measurementlog-overview.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap' ;
+import { TicksToDatePipe } from './ticks-to-date-pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MeasurementlogOverviewComponent
+    MeasurementlogOverviewComponent,
+    TicksToDatePipe
   ],
   imports: [
     BrowserModule,
