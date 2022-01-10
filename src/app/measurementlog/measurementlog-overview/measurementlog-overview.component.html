@@ -1,0 +1,39 @@
+<div class="container">
+    <p>You can do filter table data, in this case with observables and our <code>NgbHighlight</code> component used in Typeahead</p>
+    
+    <form>
+      <div class="form-group form-inline">
+          Full text search: <input class="form-control ml-2" type="text" [formControl]="filter"/>
+      </div>
+    </form>
+    <div *ngIf="measurementLogsToRender.length > 0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Measurementname</th>
+                    <th scope="col">CreatedAt</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let measurementLog of measurementLogsToRender; index as i">
+                    <td>{{measurementLog.measurementName}}</td>
+                    <td>{{measurementLog.createdAt}}</td>
+                    <td>{{measurementLog.type}}</td>
+                    <td>{{measurementLog.message}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-between p-2">
+            <ngb-pagination [collectionSize]="measurementLogs.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5" (pageChange)="refreshPage()">
+            </ngb-pagination>
+          
+            <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshPage()">
+              <option [ngValue]="5">5 items per page</option>
+              <option [ngValue]="10">10 items per page</option>
+              <option [ngValue]="20">20 items per page</option>
+            </select>
+          </div>
+    </div>
+</div>
