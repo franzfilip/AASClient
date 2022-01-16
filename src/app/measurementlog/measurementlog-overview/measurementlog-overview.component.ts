@@ -9,55 +9,60 @@ import { ManagerService } from 'src/app/services/manager.service';
   styleUrls: ['./measurementlog-overview.component.scss']
 })
 export class MeasurementlogOverviewComponent implements OnInit {
+  initialMeasurementLogs: MeasurementlogDto[] = [];
+  filteredMeasurementLogs: MeasurementlogDto[] = [];
   measurementLogsToRender: MeasurementlogDto[] = [];
-  measurementLogs: MeasurementlogDto[] = [];
   filter = new FormControl('');
   page = 1;
   pageSize = 10;
   collectionSize = 0;
   
   constructor(private manager: ManagerService) {
-    this.filter.valueChanges.subscribe(text => {
-      console.log(text);
-      this.refreshPage(text);
+    this.filter.valueChanges.subscribe((text:string) => {
+      if(text.length > 0){
+        this.filterList();
+      }
+      else{
+        this.filteredMeasurementLogs = this.initialMeasurementLogs;
+        this.navigatePage(this.initialMeasurementLogs);
+      }
     });
-    // this.countries$ = this.filter.valueChanges.pipe(
-    //   startWith(''),
-    //   map(text => search(text, pipe))
-    // );
   }
 
   ngOnInit(): void {
-    this.loadData();
+    this.loadMeasurementLogs();
   }
 
-  loadData(){
+  loadMeasurementLogs(){
     this.manager.getAllMeasurementLogs().subscribe((data) => {
-      this.measurementLogs = data;
-      this.refreshPage();
+      this.initialMeasurementLogs = this.filteredMeasurementLogs = data;
+      this.navigatePage(this.filteredMeasurementLogs);
     });
   }
 
-  refreshPage(text: string = "") {
-    if(text.length == 0){
-      this.measurementLogsToRender = this.measurementLogs
-      // .map((country, i) => ({...country}))
-      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-    }
-    else{
-      this.measurementLogsToRender = this.search(text);
-    }
+  navigatePage(measurementLogs: MeasurementlogDto[]) {
+    this.measurementLogsToRender = measurementLogs.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
+
+  changePage(){
+    this.navigatePage(this.filteredMeasurementLogs);
   }
 
   search(text: string): MeasurementlogDto[] {
     this.page = 1;
-    return this.measurementLogs.filter(measurementlog => {
+    return this.initialMeasurementLogs.filter(measurementlog => {
       const term = text.toLowerCase();
       return measurementlog.measurementName.toLowerCase().includes(term)
           || measurementlog.message.toLowerCase().includes(term)
           || measurementlog.type.toLowerCase().includes(term)
-          // || pipe.transform(country.area).includes(term)
-          // || pipe.transform(country.population).includes(term);
     });
+  }
+
+  filterList(){
+    let searchString:string = this.filter.value;
+    if(searchString && searchString.length > 0){
+      this.filteredMeasurementLogs = this.search(searchString);
+      this.navigatePage(this.filteredMeasurementLogs);
+    }
   }
 }

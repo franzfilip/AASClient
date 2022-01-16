@@ -1,13 +1,9 @@
 <div class="container">
-    <p>You can do filter table data, in this case with observables and our <code>NgbHighlight</code> component used in
-        Typeahead</p>
-
     <form>
         <div class="d-flex justify-space-between p-2">
-            <div class="form-group form-inline">
-                Full text search: <input class="form-control ml-2" type="text" [formControl]="filter" />
+            <div class="form-group form-inline" style="width: 100%;">
+                <input class="form-control ml-2" type="text" [formControl]="filter" placeholder="Suchen..."/>
             </div>
-            <button></button>
         </div>
     </form>
     <div *ngIf="measurementLogsToRender.length > 0">
@@ -22,19 +18,19 @@
             </thead>
             <tbody>
                 <tr *ngFor="let measurementLog of measurementLogsToRender; index as i">
-                    <td>{{measurementLog.measurementName}}</td>
-                    <td>{{measurementLog.createdAt | TicksToDatePipe}}</td>
-                    <td>{{measurementLog.type}}</td>
-                    <td>{{measurementLog.message}}</td>
+                    <td><ngb-highlight [result]="measurementLog.measurementName" [term]="filter.value"></ngb-highlight></td>
+                    <td><ngb-highlight [result]="measurementLog.createdAt | TicksToDatePipe" [term]="filter.value"></ngb-highlight></td>
+                    <td><ngb-highlight [result]="measurementLog.type" [term]="filter.value"></ngb-highlight></td>
+                    <td><ngb-highlight [result]="measurementLog.message" [term]="filter.value"></ngb-highlight></td>
                 </tr>
             </tbody>
         </table>
         <div class="d-flex justify-content-between p-2">
-            <ngb-pagination [collectionSize]="measurementLogs.length" [(page)]="page" [pageSize]="pageSize"
-                [maxSize]="5" (pageChange)="refreshPage()">
+            <ngb-pagination [collectionSize]="filteredMeasurementLogs.length" [(page)]="page" [pageSize]="pageSize"
+                [maxSize]="5" (pageChange)="changePage()">
             </ngb-pagination>
 
-            <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshPage()">
+            <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="changePage()">
                 <option [ngValue]="5">5 items per page</option>
                 <option [ngValue]="10">10 items per page</option>
                 <option [ngValue]="20">20 items per page</option>
