@@ -1,0 +1,63 @@
+<!-- <div class="container">
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Name</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">Status</div>
+                </div>
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Measurementlogs</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                </div>
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Metriken</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="container">
+    <form>
+        <div class="d-flex justify-space-between p-2">
+            <div class="form-group form-inline" style="width: 100%;">
+                <input class="form-control ml-2" type="text" [formControl]="filter" placeholder="Suchen..."/>
+            </div>
+        </div>
+    </form>
+    <div *ngIf="clientInstancesToRender.length > 0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Detektoren</th>
+                    <th scope="col">Logs</th>
+                    <th scope="col">Simulator</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let clientInstance of clientInstancesToRender; index as i">
+                    <td><ngb-highlight [result]="clientInstance.identifier" [term]="filter.value"></ngb-highlight></td>
+                    <td>{{clientInstance.detectorCount}}</td>
+                    <td>nope</td>
+                    <td><button class="btn btn-success" (click)="navigateToSimulation(clientInstance.id)"><i class="bi bi-backspace-reverse"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-between p-2">
+            <ngb-pagination [collectionSize]="filteredClientInstances.length" [(page)]="page" [pageSize]="pageSize"
+                [maxSize]="5" (pageChange)="changePage()">
+            </ngb-pagination>
+
+            <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="changePage()">
+                <option [ngValue]="5">5 items per page</option>
+                <option [ngValue]="10">10 items per page</option>
+                <option [ngValue]="20">20 items per page</option>
+            </select>
+        </div>
+    </div>
+</div>

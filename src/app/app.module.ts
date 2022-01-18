@@ -8,12 +8,16 @@ import { MeasurementlogOverviewComponent } from './measurementlog/measurementlog
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap' ;
 import { TicksToDatePipe } from './ticks-to-date-pipe';
+import { ClientinstanceOverviewComponent } from './clientinstance/clientinstance-overview/clientinstance-overview.component';
+import { SimulationComponent } from './simulation/simulation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MeasurementlogOverviewComponent,
-    TicksToDatePipe
+    TicksToDatePipe,
+    ClientinstanceOverviewComponent,
+    SimulationComponent
   ],
   imports: [
     BrowserModule,
