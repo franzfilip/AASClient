@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ClientInstanceDto } from '../models/clientinstance/clientinstancedto';
 import { DetectorDto } from '../models/detector/detectordto';
-import { MeasurementlogDto } from '../models/measurmentlog/measurementlogdto';
+import { MeasurementlogDto } from '../models/measurementlog/measurementlogdto';
 
 @Injectable({
   providedIn: 'root'
@@ -37,9 +37,6 @@ export class ManagerService {
       "AppKey": appKey
     };
     
-    const requestOptions = {                                                                                                                                                                                 
-      headers: new Headers(headerDict), 
-    };
     return this.http.get<Array<ClientInstanceDto>>(this.apiUrl + "/ClientInstance", {
       headers: new HttpHeaders(headerDict)
     });
@@ -59,6 +56,10 @@ export class ManagerService {
     return this.http.get<Array<DetectorDto>>(this.apiUrl + "/Detector", {
       params: params
     });
+  }
+
+  getClientInstanceById(clientInstanceId: string): Observable<ClientInstanceDto>{
+    return this.http.get<ClientInstanceDto>(this.apiUrl + "/ClientInstance/" + clientInstanceId);
   }
   
 }

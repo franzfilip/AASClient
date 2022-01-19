@@ -1,1 +1,55 @@
-<p>simulation works!</p>
+<div class="container">
+    <div class="card border-left-primary shadow h-100 py-2" style="margin-top: 10px;">
+        <div class="card-header">
+            <h5>{{clientInstance.identifier}}</h5>
+        </div>
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <!-- <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Name</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">Status</div>
+                </div> -->
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Error</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{errorLogCount}}</div>
+                </div>
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Warning</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{warningLogCount}}</div>
+                </div>
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Trace</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{traceLogCount}}</div>
+                </div>
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Counter</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{counterMetricCount}}</div>
+                </div>
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">TimeSpan</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{timespanMetricCount}}</div>
+                </div>
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Measurement</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{measurementMetricCount}}</div>
+                </div>
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Failed</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{errorCount}}</div>
+                </div>
+                <!-- <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                </div> -->
+            </div>
+            <p><ngb-progressbar [showValue]="true" type="info" [value]="requestsSent" style="height: 20px; margin-top: 30px;"></ngb-progressbar></p>
+            <div *ngIf="!isSimulationRunning; else simulationRunning">
+                <button class="btn btn-success" (click)="startSimulation()">Start Simulation</button>
+            </div>
+            <ng-template #simulationRunning>
+                <button class="btn btn-danger" (click)="stopSimulation()">Stop Simulation</button>
+            </ng-template>
+
+            <h5 style="padding-top: 10px;">Anzahl Requests = {{requestsSent}}</h5>
+        </div>
+    </div>
+</div>

@@ -43,7 +43,7 @@
                 <tr *ngFor="let clientInstance of clientInstancesToRender; index as i">
                     <td><ngb-highlight [result]="clientInstance.identifier" [term]="filter.value"></ngb-highlight></td>
                     <td>{{clientInstance.detectorCount}}</td>
-                    <td>nope</td>
+                    <td>{{clientInstance.measurementLogCount}}</td>
                     <td><button class="btn btn-success" (click)="navigateToSimulation(clientInstance.id)"><i class="bi bi-backspace-reverse"></i></button></td>
                 </tr>
             </tbody>

@@ -1,6 +1,6 @@
 import { Component, OnInit, PipeTransform } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MeasurementlogDto } from 'src/app/models/measurmentlog/measurementlogdto';
+import { MeasurementlogDto } from 'src/app/models/measurementlog/measurementlogdto';
 import { ManagerService } from 'src/app/services/manager.service';
 
 @Component({
