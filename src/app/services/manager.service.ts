@@ -61,5 +61,17 @@ export class ManagerService {
   getClientInstanceById(clientInstanceId: string): Observable<ClientInstanceDto>{
     return this.http.get<ClientInstanceDto>(this.apiUrl + "/ClientInstance/" + clientInstanceId);
   }
+
+  getDetectorsByClientInstanceId(clientInstanceId: string): Observable<Array<DetectorDto>>{
+    let params = new HttpParams();
+
+    if(clientInstanceId !== null){
+      params = params.append("clientInstanceId", clientInstanceId);
+    }
+    
+    return this.http.get<Array<DetectorDto>>(this.apiUrl + "/Detector", {
+      params: params
+    });
+  }
   
 }

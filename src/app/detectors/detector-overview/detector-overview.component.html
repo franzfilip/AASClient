@@ -1,0 +1,42 @@
+<div class="container">
+    <form>
+        <div class="d-flex justify-space-between p-2">
+            <div class="form-group form-inline" style="width: 100%;">
+                <input class="form-control ml-2" type="text" [formControl]="filter" placeholder="Suchen..."/>
+            </div>
+        </div>
+    </form>
+    <div *ngIf="detectorsToRender.length > 0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Measurementname</th>
+                    <th scope="col">DetectorInterval</th>
+                    <th scope="col">isActive</th>
+                    <th scope="col">Optionen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let detector of detectorsToRender; index as i">
+                    <td><ngb-highlight [result]="detector.name" [term]="filter.value"></ngb-highlight></td>
+                    <td><ngb-highlight [result]="detector.measurementName" [term]="filter.value"></ngb-highlight></td>
+                    <td>{{detector.detectorInterval | TicksToSecondsPipe }}</td>
+                    <td>{{detector.isActive}}</td>
+                    <td><button class="btn btn-primary" (click)="editDetector(detector)"><i class="bi bi-pencil"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-between p-2">
+            <ngb-pagination [collectionSize]="filteredDetectors.length" [(page)]="page" [pageSize]="pageSize"
+                [maxSize]="5" (pageChange)="changePage()">
+            </ngb-pagination>
+
+            <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="changePage()">
+                <option [ngValue]="5">5 items per page</option>
+                <option [ngValue]="10">10 items per page</option>
+                <option [ngValue]="20">20 items per page</option>
+            </select>
+        </div>
+    </div>
+</div>

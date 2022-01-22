@@ -10,14 +10,25 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap' ;
 import { TicksToDatePipe } from './ticks-to-date-pipe';
 import { ClientinstanceOverviewComponent } from './clientinstance/clientinstance-overview/clientinstance-overview.component';
 import { SimulationComponent } from './simulation/simulation.component';
+import { DetectorOverviewComponent } from './detectors/detector-overview/detector-overview.component';
+import { TicksToSecondsPipe } from './ticks-to-seconds-pipe';
+import { LoadinganimationComponent } from './loadinganimation/loadinganimation.component';
+import { EditDetectorComponent } from './detectors/edit-detector/edit-detector.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     MeasurementlogOverviewComponent,
     TicksToDatePipe,
+    TicksToSecondsPipe,
     ClientinstanceOverviewComponent,
-    SimulationComponent
+    SimulationComponent,
+    DetectorOverviewComponent,
+    LoadinganimationComponent,
+    EditDetectorComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +36,9 @@ import { SimulationComponent } from './simulation/simulation.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
