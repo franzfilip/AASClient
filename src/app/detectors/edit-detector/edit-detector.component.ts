@@ -40,6 +40,7 @@ export class EditDetectorComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

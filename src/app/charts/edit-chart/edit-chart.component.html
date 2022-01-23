@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h4 class="modal-title">Chart erstellen</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="createChart">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Typ</mat-label>
+                <select matNativeControl formControlName="type">
+                    <option value="counter">Counter Metric</option>
+                    <option value="measurement">Measurement Metric</option>
+                    <option value="timespan">TimeSpan Metric</option>
+                </select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Style</mat-label>
+                <select matNativeControl formControlName="style">
+                    <option value="bar">Bar</option>
+                    <option value="line">Line</option>
+                    <option value="doughnut">Doughnut</option>
+                </select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Measurementname</mat-label>
+                <input type="text" matInput formControlName="measurementname" placeholder="CPU-Temperature">
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" (click)="save()">Hinzufügen</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

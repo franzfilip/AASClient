@@ -75,13 +75,13 @@ export class ManagerService {
     });
   }
 
-  getMetrics(clientInstanceId: string, measurementName: string): Observable<Array<MetricDto>>{
+  getMetrics(clientInstanceId: string, measurementName: string = ""): Observable<Array<MetricDto>>{
     let params = new HttpParams();
 
-    if(clientInstanceId !== null){
+    if(clientInstanceId !== ""){
       params = params.append("clientInstanceId", clientInstanceId);
     }
-    if(measurementName !== null){
+    if(measurementName !== ""){
       params = params.append("measurementName", measurementName);
     }
     

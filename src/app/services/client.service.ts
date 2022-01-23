@@ -59,7 +59,9 @@ export class ClientService {
     }
     else if(randomMetricType === 2){
       metric.measurementName = "Dummy MeasurementMetric";
-      metric.measurement = 23.45;
+      let rand = Math.random() * (255 - 10) + 10;
+      console.log(rand);
+      metric.measurement = rand;
     }
 
     return metric;

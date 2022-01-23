@@ -18,8 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { Chart } from 'chart.js';
+import { NgChartsModule } from 'ng2-charts';
 import { StaticChartsComponent } from './charts/static-charts/static-charts.component';
+import { EditChartComponent } from './charts/edit-chart/edit-chart.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { StaticChartsComponent } from './charts/static-charts/static-charts.comp
     DetectorOverviewComponent,
     LoadinganimationComponent,
     EditDetectorComponent,
-    StaticChartsComponent
+    StaticChartsComponent,
+    EditChartComponent
   ],
   imports: [
     BrowserModule,
@@ -44,9 +46,12 @@ import { StaticChartsComponent } from './charts/static-charts/static-charts.comp
     BrowserAnimationsModule,
     MatInputModule,
     MatCheckboxModule,
-    Chart
+    NgChartsModule
   ],
-  providers: [],
+  providers: [
+    TicksToDatePipe,
+    TicksToSecondsPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
