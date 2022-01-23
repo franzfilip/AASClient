@@ -17,6 +17,7 @@ import { EditDetectorComponent } from './detectors/edit-detector/edit-detector.c
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

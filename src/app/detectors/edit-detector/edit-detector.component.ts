@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ModalDismissReasons, NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -17,18 +17,21 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class EditDetectorComponent implements OnInit {
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  name = new FormControl('', [Validators.required]);
-  minValue = new FormControl('', [Validators.required]);
-  maxValue = new FormControl('', [Validators.required]);
-  detectorInterval = new FormControl('', [Validators.required]);
-  fromTime = new FormControl('', [Validators.required]);
-  untilTime = new FormControl('', [Validators.required]);
-  lastMeasures = new FormControl('', [Validators.required]);
-  listOperation = new FormControl('', [Validators.required]);
-  detectorAction = new FormControl('', [Validators.required]);
-  maxOutLiers = new FormControl('', [Validators.required]);
-  measurementName = new FormControl('', [Validators.required]);
+  editDetector = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    minValue: new FormControl('', [Validators.required]),
+    maxValue: new FormControl('', [Validators.required]),
+    detectorInterval: new FormControl('', [Validators.required]),
+    fromTime: new FormControl('', [Validators.required]),
+    untilTime: new FormControl('', [Validators.required]),
+    lastMeasures: new FormControl('', [Validators.required]),
+    listOperation: new FormControl('', [Validators.required]),
+    detectorAction: new FormControl('', [Validators.required]),
+    maxOutLiers: new FormControl('', [Validators.required]),
+    measurementName: new FormControl('', [Validators.required]),
+  });
+
+
 
   matcher = new MyErrorStateMatcher();
 

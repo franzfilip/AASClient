@@ -20,7 +20,7 @@ export class ManagerService {
     this.apiUrl = `${environment.baseUrl}/Management`;
   }
 
-  getMeasurementLogsByClientInstanceId(clientInstanceId: string = "F33D29CA-EAD6-4AAA-830A-4972D7EF06D7"): Observable<Array<MeasurementlogDto>> {
+  getMeasurementLogsByClientInstanceId(clientInstanceId: string = "781FD682-B210-4A77-9848-E6F70AF150EB"): Observable<Array<MeasurementlogDto>> {
     let params = new HttpParams();
 
     if(clientInstanceId !== null){
@@ -32,7 +32,7 @@ export class ManagerService {
     });
   }
 
-  getClientInstancesByAppKey(appKey: string = "testkey03"): Observable<Array<ClientInstanceDto>> {
+  getClientInstancesByAppKey(appKey: string = "testkey02"): Observable<Array<ClientInstanceDto>> {
     const headerDict = {
       "AppKey": appKey
     };

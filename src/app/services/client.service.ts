@@ -65,6 +65,21 @@ export class ClientService {
     return metric;
   }
 
+  public getCPUDummyMetric(clientInstanceId: string): MetricCreationDto {
+    var date: Date = new Date();
+    date.setHours(date.getHours() + 1);
+
+    let metric: MetricCreationDto =  {
+      clientInstanceId: clientInstanceId,
+      createdAt: this.getTicksFromDate(date),
+      measurementName: "CPU-Temperature"
+    };
+
+    metric.measurement = Math.random() * (80 - 70) + 70;
+
+    return metric;
+  }
+
   public createMeasurementLog(measurementlog: CreateMeasurementLog, appKey: string): Observable<string> {
     const headerDict = {
       "AppKey": appKey

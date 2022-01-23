@@ -6,18 +6,18 @@
 </div>
 
 <div class="modal-body">
-    <form>
+    <form [formGroup]="editDetector">
         <div class="row">
             <div class="col-sm">
                 <mat-form-field appearance="outline">
                     <mat-label>Name</mat-label>
-                    <input type="text" matInput [formControl]="name" placeholder="name">
+                    <input type="text" matInput formControlName="name" placeholder="name">
                 </mat-form-field>
             </div>
             <div class="col-sm">
                 <mat-form-field appearance="outline">
                     <mat-label>Measurementname</mat-label>
-                    <input type="text" matInput [formControl]="name" placeholder="Measurementname">
+                    <input type="text" matInput formControlName="name" placeholder="Measurementname">
                 </mat-form-field>
             </div>
         </div>
@@ -26,13 +26,13 @@
             <div class="col-sm">
                 <mat-form-field appearance="outline">
                     <mat-label>Minimaler Wert</mat-label>
-                    <input type="number" matInput [formControl]="minValue" placeholder="0">
+                    <input type="number" matInput formControlName="minValue" placeholder="0">
                 </mat-form-field>
             </div>
             <div class="col-sm">
                 <mat-form-field appearance="outline">
                     <mat-label>Maximaler Wert</mat-label>
-                    <input type="number" matInput [formControl]="maxValue" placeholder="100">
+                    <input type="number" matInput formControlName="maxValue" placeholder="100">
                 </mat-form-field>
             </div>
         </div>
@@ -41,13 +41,13 @@
             <div class="col-sm">
                 <mat-form-field appearance="outline">
                     <mat-label>Detector Interval</mat-label>
-                    <input type="number" matInput [formControl]="detectorInterval" placeholder="10">
+                    <input type="number" matInput formControlName="detectorInterval" placeholder="10">
                 </mat-form-field>
             </div>
             <div class="col-sm">
                 <mat-form-field appearance="outline">
                     <mat-label># letzte Messungen</mat-label>
-                    <input type="number" matInput [formControl]="lastMeasures" placeholder="100">
+                    <input type="number" matInput formControlName="lastMeasures" placeholder="100">
                 </mat-form-field>
             </div>
         </div>
@@ -56,13 +56,13 @@
             <div class="col-sm">
                 <mat-form-field appearance="outline">
                     <mat-label>Startzeitpunkt</mat-label>
-                    <input type="number" matInput [formControl]="fromTime" placeholder="">
+                    <input type="number" matInput formControlName="fromTime" placeholder="">
                 </mat-form-field>
             </div>
             <div class="col-sm">
                 <mat-form-field appearance="outline">
                     <mat-label>Endzeitpunkt</mat-label>
-                    <input type="number" matInput [formControl]="untilTime" placeholder="">
+                    <input type="number" matInput formControlName="untilTime" placeholder="">
                 </mat-form-field>
             </div>
         </div>
@@ -71,13 +71,13 @@
             <div class="col-sm">
                 <mat-form-field appearance="outline">
                     <mat-label>Maximale Ausreißer</mat-label>
-                    <input type="number" matInput [formControl]="maxOutLiers" placeholder="5">
+                    <input type="number" matInput formControlName="maxOutLiers" placeholder="5">
                 </mat-form-field>
             </div>
             <div class="col-sm">
                 <mat-form-field appearance="outline">
                     <mat-label>List Operation</mat-label>
-                    <input type="number" matInput [formControl]="listOperation" placeholder="">
+                    <input type="number" matInput formControlName="listOperation" placeholder="">
                 </mat-form-field>
             </div>
         </div>
