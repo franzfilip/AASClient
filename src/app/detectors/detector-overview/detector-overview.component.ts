@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ClientInstanceDto } from 'src/app/models/clientinstance/clientinstancedto';
@@ -28,7 +29,7 @@ export class DetectorOverviewComponent implements OnInit {
     appKey: ""
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private managerService: ManagerService, private modalService: NgbModal) {
+  constructor(private activatedRoute: ActivatedRoute, private managerService: ManagerService, private modalService: NgbModal, private dialog: MatDialog) {
     this.filter.valueChanges.subscribe((text:string) => {
       if(text.length > 0){
         this.filterList();
@@ -81,10 +82,16 @@ export class DetectorOverviewComponent implements OnInit {
   }
 
   editDetector(detector: DetectorDto){
-    this.modalService.open(EditDetectorComponent, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      console.log(`Closed with: ${result}`);
-    }, (reason) => {
-      console.log(`Dismissed ${reason}`);
+    const dialog = this.dialog.open(EditDetectorComponent, {
+      data: {
+        clientInstanceId: this.clientInstance.id,
+        detectorActionId: "64AB6CA1-FA3A-426C-881E-7BD696A14F2B",
+        detector: detector
+      }
+    });
+
+    dialog.afterClosed().subscribe(result => {
+      console.log(result);
     });
   }
 

@@ -18,9 +18,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { NgChartsModule } from 'ng2-charts';
 import { StaticChartsComponent } from './charts/static-charts/static-charts.component';
 import { EditChartComponent } from './charts/edit-chart/edit-chart.component';
+import { OAuthModule } from 'angular-oauth2-oidc';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { EditChartComponent } from './charts/edit-chart/edit-chart.component';
     LoadinganimationComponent,
     EditDetectorComponent,
     StaticChartsComponent,
-    EditChartComponent
+    EditChartComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ import { EditChartComponent } from './charts/edit-chart/edit-chart.component';
     BrowserAnimationsModule,
     MatInputModule,
     MatCheckboxModule,
-    NgChartsModule
+    NgChartsModule,
+    OAuthModule.forRoot(),
+    MatDialogModule
   ],
   providers: [
     TicksToDatePipe,

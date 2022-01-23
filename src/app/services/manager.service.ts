@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ClientInstanceDto } from '../models/clientinstance/clientinstancedto';
+import { DetectorCreationDto } from '../models/detector/detectorcreationdto';
 import { DetectorDto } from '../models/detector/detectordto';
+import { DetectorUpdateDto } from '../models/detector/detectorupdatedto';
 import { MeasurementlogDto } from '../models/measurementlog/measurementlogdto';
 import { MetricDto } from '../models/metric/metric-dto';
 
@@ -89,5 +91,12 @@ export class ManagerService {
       params: params
     });
   }
+
+  createDetector(detector: DetectorCreationDto): Observable<string>{
+    return this.http.post<string>(this.apiUrl + "/Detector", detector);
+  }
   
+  updateDetector(detector: DetectorUpdateDto): Observable<boolean>{
+    return this.http.put<boolean>(this.apiUrl + "/Detector/" + detector.id, detector);
+  }
 }
