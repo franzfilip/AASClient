@@ -95,4 +95,17 @@ export class DetectorOverviewComponent implements OnInit {
     });
   }
 
+  createDetector(){
+    const dialog = this.dialog.open(EditDetectorComponent, {
+      data: {
+        clientInstanceId: this.clientInstance.id,
+        detectorActionId: "64AB6CA1-FA3A-426C-881E-7BD696A14F2B"
+      }
+    });
+
+    dialog.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+  }
+
 }

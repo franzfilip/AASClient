@@ -23,7 +23,7 @@ export class ManagerService {
     this.apiUrl = `${environment.baseUrl}/Management`;
   }
 
-  getMeasurementLogsByClientInstanceId(clientInstanceId: string = "781FD682-B210-4A77-9848-E6F70AF150EB"): Observable<Array<MeasurementlogDto>> {
+  getMeasurementLogsByClientInstanceId(clientInstanceId: string): Observable<Array<MeasurementlogDto>> {
     let params = new HttpParams();
 
     if(clientInstanceId !== null){

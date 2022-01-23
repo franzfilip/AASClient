@@ -34,7 +34,7 @@ export class MeasurementlogOverviewComponent implements OnInit {
   }
 
   loadMeasurementLogs(){
-    this.manager.getMeasurementLogsByClientInstanceId().subscribe((data) => {
+    this.manager.getMeasurementLogsByClientInstanceId("781FD682-B210-4A77-9848-E6F70AF150EB").subscribe((data) => {
       this.initialMeasurementLogs = this.filteredMeasurementLogs = data;
       this.navigatePage(this.filteredMeasurementLogs);
     });
