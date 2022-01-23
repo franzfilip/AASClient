@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { Chart } from 'chart.js';
+import { StaticChartsComponent } from './charts/static-charts/static-charts.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     SimulationComponent,
     DetectorOverviewComponent,
     LoadinganimationComponent,
-    EditDetectorComponent
+    EditDetectorComponent,
+    StaticChartsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     NgbModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    Chart
   ],
   providers: [],
   bootstrap: [AppComponent]

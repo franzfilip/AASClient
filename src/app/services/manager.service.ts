@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ClientInstanceDto } from '../models/clientinstance/clientinstancedto';
 import { DetectorDto } from '../models/detector/detectordto';
 import { MeasurementlogDto } from '../models/measurementlog/measurementlogdto';
+import { MetricDto } from '../models/metric/metric-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +71,21 @@ export class ManagerService {
     }
     
     return this.http.get<Array<DetectorDto>>(this.apiUrl + "/Detector", {
+      params: params
+    });
+  }
+
+  getMetrics(clientInstanceId: string, measurementName: string): Observable<Array<MetricDto>>{
+    let params = new HttpParams();
+
+    if(clientInstanceId !== null){
+      params = params.append("clientInstanceId", clientInstanceId);
+    }
+    if(measurementName !== null){
+      params = params.append("measurementName", measurementName);
+    }
+    
+    return this.http.get<Array<MetricDto>>(this.apiUrl + "/Metric", {
       params: params
     });
   }

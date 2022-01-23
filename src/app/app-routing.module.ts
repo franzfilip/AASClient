@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { StaticChartsComponent } from './charts/static-charts/static-charts.component';
 import { ClientinstanceOverviewComponent } from './clientinstance/clientinstance-overview/clientinstance-overview.component';
 import { DetectorOverviewComponent } from './detectors/detector-overview/detector-overview.component';
 import { MeasurementlogOverviewComponent } from './measurementlog/measurementlog-overview/measurementlog-overview.component';
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'clientInstances/:clientInstanceId/detectors',
     component: DetectorOverviewComponent
+  },
+  {
+    path: 'staticDataAnalyzer',
+    component: StaticChartsComponent
   }
  ];
 
