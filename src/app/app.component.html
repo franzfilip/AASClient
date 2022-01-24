@@ -16,6 +16,7 @@
           <a class="nav-link" [routerLink]="['staticDataAnalyzer']">Statische Datenanalyse</a>
         </li>
       </ul>
+      <button type="submit" class="btn btn-danger" (click)="authenticationService.logOut()" *ngIf="authenticationService.isLoggedIn()">Logout</button>
     </div>
   </div>
 </nav>

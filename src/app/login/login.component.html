@@ -1,21 +1,31 @@
 <div class="container">
-  <div class="ui middle aligned center aligned grid">
-      <div class="column">
-        <h2 class="ui image header">
-          <div class="content">
-            Log-in to your account
-          </div>
-        </h2>
-        <form class="ui large form" _lpchecked="1"
-          #loginForm="ngForm"
-          (ngSubmit)="submitForm()">
-          <div class="ui stacked segment">
-            <button class="ui fluid large red submit button" >Login</button>
-          </div>
-    
-          <div class="ui error message"></div>
-    
-        </form>
-      </div>
+  <div class="card">
+    <div class="card-header">
+      Login
     </div>
+    <div class="card-body">
+      <form [formGroup]="userData">
+        <div class="row">
+          <div class="column">
+            <mat-form-field appearance="outline">
+              <mat-label>Username</mat-label>
+              <input matInput type="text" formControlName="username" placeholder="Username">
+            </mat-form-field>
+          </div>
+          <div class="column">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="password">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="loginButton column text-center">
+          <button class="btn btn-primary"(click)="login()">Login</button>
+        </div>
+        <div class="loginButton column text-center">
+          <button class="btn btn-primary"(click)="login()" [disabled]="!userData.valid">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
