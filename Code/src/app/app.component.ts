@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
 import { authConfig } from './auth.config';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +11,14 @@ import { authConfig } from './auth.config';
 export class AppComponent {
   title = 'AAAS';
 
-  constructor(private oauthService: OAuthService){
+  constructor(private oauthService: OAuthService, public authenticationService: AuthenticationService){
     this.configureWithNewConfigApi();
   }
 
   private configureWithNewConfigApi() {
     this.oauthService.configure(authConfig);
     this.oauthService.loadDiscoveryDocumentAndTryLogin();
+    //--- tryLogin wird zusätzlich gebraucht um sich beim Server anmelden zu können - obiger Code hat in der Übung jedoch funktioniert, Konfigurationsfehler OAuth
     this.oauthService.tryLogin();
-    // this.oauthService.tokenValidationHandler = new JwksValidationHandler();
-    // this.oauthService.loadDiscoveryDocumentAndTryLogin().then(value => console.log(this.oauthService.hasValidAccessToken() && this.oauthService.hasValidIdToken()));
   }
 }

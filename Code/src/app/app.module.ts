@@ -24,6 +24,7 @@ import { StaticChartsComponent } from './charts/static-charts/static-charts.comp
 import { EditChartComponent } from './charts/edit-chart/edit-chart.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { LoginComponent } from './login/login.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { LoginComponent } from './login/login.component';
     MatCheckboxModule,
     NgChartsModule,
     OAuthModule.forRoot(),
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule
   ],
   providers: [
     TicksToDatePipe,

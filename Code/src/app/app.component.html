@@ -4,7 +4,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto ps-5 mb-2 mb-lg-0">
         <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-          <a class="nav-link" [routerLink]="['Home']">Home</a>
+          <a class="nav-link" [routerLink]="['home']">Home</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
           <a class="nav-link" [routerLink]="['clientinstances']">ClientInstances</a>
@@ -16,6 +16,7 @@
           <a class="nav-link" [routerLink]="['staticDataAnalyzer']">Statische Datenanalyse</a>
         </li>
       </ul>
+      <button type="submit" class="btn btn-danger" (click)="authenticationService.logOut()" *ngIf="authenticationService.isLoggedIn()">Logout</button>
     </div>
   </div>
 </nav>

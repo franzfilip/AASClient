@@ -22,16 +22,16 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class EditDetectorComponent implements OnInit {
 
   editDetector = new FormGroup({
-    name: new FormControl('', [Validators.required]),
+    name: new FormControl('', Validators.required),
     minValue: new FormControl(''),
     maxValue: new FormControl(''),
-    detectorInterval: new FormControl('', [Validators.required]),
+    detectorInterval: new FormControl('', Validators.required),
     fromTime: new FormControl(''),
     untilTime: new FormControl(''),
     lastMeasures: new FormControl(''),
-    listOperation: new FormControl('', [Validators.required]),
-    maxOutLiers: new FormControl('', [Validators.required]),
-    measurementName: new FormControl('', [Validators.required]),
+    listOperation: new FormControl('', Validators.required),
+    maxOutLiers: new FormControl('', Validators.required),
+    measurementName: new FormControl('', Validators.required),
   });
   matcher = new MyErrorStateMatcher();
 

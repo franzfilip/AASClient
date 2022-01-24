@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -9,23 +10,25 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class LoginComponent implements OnInit {
 
-  login: any = {
-    username: '',
-    password: ''
-  };
+  userData = new FormGroup({
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
+  })
+
+  
 
   private returnTo: string = '';
 
   constructor(private auth: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    if(this.auth.isLoggedIn()){
+      this.router.navigateByUrl("/home");
+    }
   }
 
-  submitForm() {
-    if (this.auth.login(this.login.username, this.login.password)) {
-      this.router.navigateByUrl("/clientinstances");
-    } else {
-      // TODO error message
-    }
+  login() {
+    this.auth.login();
+    this.router.navigateByUrl("/home");
   }
 }

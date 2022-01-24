@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Login
+    </div>
+    <div class="card-body">
+      <form [formGroup]="userData">
+        <div class="row">
+          <div class="column">
+            <mat-form-field appearance="outline">
+              <mat-label>Username</mat-label>
+              <input matInput type="text" formControlName="username" placeholder="Username">
+            </mat-form-field>
+          </div>
+          <div class="column">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="password">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="loginButton column text-center">
+          <button class="btn btn-primary"(click)="login()">Login</button>
+        </div>
+        <div class="loginButton column text-center">
+          <button class="btn btn-primary"(click)="login()" [disabled]="!userData.valid">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

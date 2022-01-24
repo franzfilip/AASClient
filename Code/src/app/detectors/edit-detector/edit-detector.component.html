@@ -1,5 +1,6 @@
 <div mat-dialog-title>
-    <h4 class="modal-title">Edit Detector</h4>
+    <h4 class="modal-title" *ngIf="data.detector">Edit Detector</h4>
+    <h4 class="modal-title" *ngIf="!data.detector">Add Detector</h4>
 </div>
 
 <div mat-dialog-content>
@@ -82,6 +83,6 @@
 </div>
 
 <div mat-dialog-actions>
-    <button class="btn btn-primary" style="margin-right: 10px;" (click)="save()">Speichern</button>
+    <button class="btn btn-primary" style="margin-right: 10px;" (click)="save()" [disabled]="!editDetector.touched">Speichern</button>
     <button type="button" class="btn btn-outline-dark" (click)="close()">Close</button>
 </div>
