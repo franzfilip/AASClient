@@ -45,7 +45,7 @@ Während der Simulation werden 100 Nachrichten im Abstand von jeweils 100ms an d
 In der `DetectorOverviewComponent` hat der User die Möglichkeit sich alle Detektoren anzusehen und diese zu bearbeiten oder hinzuzufügen.
 ![image info](./doku_screenshots/detector.png)
 
-![image info](./doku_screenshots/adddetector.png)
+![image info](./doku_screenshots/addDetector.png)
 
 ![image info](./doku_screenshots/editdetector.png)
 
@@ -78,7 +78,7 @@ Hier wird ein neues dynamisches Chart erstellt
 Das Ergebnis aus dem vorherigen Dialog
 ![image info](./doku_screenshots/chart2.png)
 
-Der Styles jedes Charts kann jederzeigt umgeändert werden
+Der Styles jedes Charts kann jederzeit umgeändert werden
 ![image info](./doku_screenshots/chartstyle.png)
 
 ## OAuth
